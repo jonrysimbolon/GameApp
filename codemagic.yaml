@@ -13,20 +13,23 @@ workflows:
         script: |
           xcodebuild -version
 
+          echo "===== RUNTIMES ====="
+          xcrun simctl list runtimes
+
+          echo "===== DEVICES ====="
           xcrun simctl list devices available
 
+          echo "===== DESTINATIONS ====="
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
             -showdestinations
 
-      - name: Run tests
-        script: |
+          echo "===== TEST TARGET ====="
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
-            -destination "platform=iOS Simulator,name=iPhone 17 Pro,OS=26.4" \
-            test
+            -showBuildSettings | grep TEST
 
       - name: Build debug app
         script: |

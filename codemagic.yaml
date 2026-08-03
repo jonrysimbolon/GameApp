@@ -9,29 +9,39 @@ workflows:
         XCODE_SCHEME: "GameApp"
 
     scripts:
-      - name: Diagnose
+      - name: Setup and Boot Simulator
         script: |
-          xcodebuild -version
-          xcrun simctl list devices available
-          xcodebuild \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -showdestinations
+          # 1. Matikan semua simulator sisa untuk menghemat RAM server
+          xcrun simctl shutdown all
+          
+          # 2. Buat simulator baru menggunakan tipe perangkat yang didukung Xcode terbaru
+          # Tipe runtime akan otomatis membaca versi SDK iOS internal Xcode yang aktif
+          TEST_DEVICE_ID=$(xcrun simctl create "CodemagicTestDevice" com.apple.CoreSimulator.SimDeviceType.iPhone-15 com.apple.CoreSimulator.SimRuntime.iOS-18-0)
+          
+          # 3. Nyalakan simulator di latar belakang server
+          xcrun simctl boot "$TEST_DEVICE_ID"
+          
+          # 4. Simpan ID perangkat ke env variabel global Codemagic untuk dipakai di step berikutnya
+          echo "export TARGET_DEVICE_ID=\"$TEST_DEVICE_ID\"" >> $CM_ENV
 
       - name: Run tests
         script: |
+          # Eksekusi tes langsung membidik ID simulator yang baru saja dinyalakan
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
-            -destination "platform=iOS Simulator,id=dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder" \
+            -destination "platform=iOS Simulator,id=$TARGET_DEVICE_ID" \
             -skipPackagePluginValidation \
             test
 
       - name: Build debug app
         script: |
+          # Proses build untuk simulator menggunakan arsitektur SDK iphonesimulator
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
+            -sdk iphonesimulator \
+            -destination "platform=iOS Simulator,id=$TARGET_DEVICE_ID" \
             -skipPackagePluginValidation \
             clean build \
             CODE_SIGN_IDENTITY="" \

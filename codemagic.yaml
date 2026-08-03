@@ -12,30 +12,27 @@ workflows:
       - name: Diagnose
         script: |
           xcodebuild -version
-
-          echo "===== RUNTIMES ====="
-          xcrun simctl list runtimes
-
-          echo "===== DEVICES ====="
           xcrun simctl list devices available
-
-          echo "===== DESTINATIONS ====="
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
             -showdestinations
 
-          echo "===== TEST TARGET ====="
+      - name: Run tests
+        script: |
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
-            -showBuildSettings | grep TEST
+            -destination "platform=iOS Simulator,name=Any iOS Simulator Device" \
+            -skipPackagePluginValidation \
+            test
 
       - name: Build debug app
         script: |
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
+            -skipPackagePluginValidation \
             clean build \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \

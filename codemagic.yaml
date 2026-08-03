@@ -1,49 +1,42 @@
 workflows:
   ios-project-debug:
     name: iOS debug
+
     environment:
       xcode: latest
       vars:
         XCODE_PROJECT: "GameApp.xcodeproj"
         XCODE_SCHEME: "GameApp"
+
     scripts:
       - name: Diagnose
         script: |
           xcodebuild -version
-          xcrun simctl list runtimes
-          xcrun simctl list devices available
-      - name: Show destinations
-        script: |
           xcodebuild \
-          -project "$XCODE_PROJECT" \
-          -scheme "$XCODE_SCHEME" \
-          -showdestinations
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            -list
+
       - name: Run tests
         script: |
-          DEVICE_UDID=$(xcrun simctl list devices available -j | python3 -c "
-          import json, sys
-          data = json.load(sys.stdin)['devices']
-          for runtime, devices in data.items():
-              if 'iOS' not in runtime:
-                  continue
-              for d in devices:
-                  if 'iPhone' in d['name']:
-                      print(d['udid'])
-                      sys.exit()
-          ")
           xcodebuild \
-          -project "$XCODE_PROJECT" \
-          -scheme "$XCODE_SCHEME" \
-          -destination "platform=iOS Simulator,id=$DEVICE_UDID" \
-          clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            test
+
       - name: Build debug app
         script: |
-          xcodebuild build \
-          -project "$XCODE_PROJECT" \
-          -scheme "$XCODE_SCHEME" \
-          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+          xcodebuild \
+            -project "$XCODE_PROJECT" \
+            -scheme "$XCODE_SCHEME" \
+            clean build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
     artifacts:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
+
     publishing:
       email:
         recipients:

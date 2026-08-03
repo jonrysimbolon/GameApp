@@ -1,0 +1,13 @@
+line_length:
+  warning: 120
+
+function_body_length:
+  warning: 50
+
+type_body_length:
+  warning: 300
+
+identifier_name:
+  min_length: 2
+  excluded:
+    - id

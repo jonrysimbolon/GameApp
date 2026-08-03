@@ -23,7 +23,7 @@ workflows:
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
-            -destination "platform=iOS Simulator,name=Any iOS Simulator Device" \
+            -destination "platform=iOS Simulator,id=dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder" \
             -skipPackagePluginValidation \
             test
 

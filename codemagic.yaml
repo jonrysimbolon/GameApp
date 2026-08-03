@@ -23,9 +23,13 @@ workflows:
 
       - name: Build debug app
         script: |
-          xcodebuild build -project "$XCODE_PROJECT" \
+          xcodebuild build \
+          -project "$XCODE_PROJECT" \
           -scheme "$XCODE_SCHEME" \
-          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO  
+          -skipPackagePluginValidation \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGNING_ALLOWED=NO
 
     artifacts:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app

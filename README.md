@@ -1,0 +1,1 @@
+[![Codemagic build status](https://api.codemagic.io/apps/6a7011389c2b48931e7de0d7/ios-project-debug/status_badge.svg)](https://codemagic.io/apps/6a7011389c2b48931e7de0d7/ios-project-debug/latest_build)

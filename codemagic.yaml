@@ -12,6 +12,12 @@ workflows:
           xcodebuild -version
           xcrun simctl list runtimes
           xcrun simctl list devices available
+      - name: Show destinations
+        script: |
+          xcodebuild \
+          -project "$XCODE_PROJECT" \
+          -scheme "$XCODE_SCHEME" \
+          -showdestinations
       - name: Run tests
         script: |
           DEVICE_UDID=$(xcrun simctl list devices available -j | python3 -c "

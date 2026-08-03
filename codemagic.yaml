@@ -12,16 +12,13 @@ workflows:
       - name: Diagnose
         script: |
           xcodebuild -version
-          xcodebuild \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -list
 
       - name: Run tests
         script: |
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
+            -destination "platform=iOS Simulator,name=iPhone 17 Pro" \
             test
 
       - name: Build debug app

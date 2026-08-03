@@ -9,49 +9,19 @@ workflows:
         XCODE_SCHEME: "GameApp"
 
     scripts:
-      - name: Setup and Boot Simulator
-        script: |
-          # Ambil Bundle Identifier Runtime iOS yang valid secara instan
-          AVAILABLE_RUNTIME=$(xcrun simctl list runtimes | grep -oE "com.apple.CoreSimulator.SimRuntime.iOS-[0-9.-]+" | head -n 1)
-          
-          if [ -z "$AVAILABLE_RUNTIME" ]; then
-            echo "Error: SimRuntime iOS tidak ditemukan pada host ini."
-            exit 1
-          fi
-
-          # Ambil Tipe Perangkat iPhone terbaru yang terdaftar di sistem
-          AVAILABLE_DEVICE_TYPE=$(xcrun simctl list devicetypes | grep -oE "com.apple.CoreSimulator.SimDeviceType.iPhone-[0-9a-zA-Z--]+" | tail -n 1)
-
-          # Buat simulator baru menggunakan relasi manifes di atas
-          TEST_DEVICE_ID=$(xcrun simctl create "CodemagicTestDevice" "$AVAILABLE_DEVICE_TYPE" "$AVAILABLE_RUNTIME")
-          
-          # Nyalakan simulator virtual untuk runtime testing
-          xcrun simctl boot "$TEST_DEVICE_ID"
-          
-          # Daftarkan variabel secara global ke environment mesin Codemagic
-          echo "export TARGET_DEVICE_ID=\"$TEST_DEVICE_ID\"" >> $CM_ENV
-
       - name: Run tests
         script: |
           xcodebuild \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -destination "platform=iOS Simulator,id=$TARGET_DEVICE_ID" \
-            -skipPackagePluginValidation \
-            test
-
+          -project "$XCODE_PROJECT" \
+          -scheme "$XCODE_SCHEME" \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17' \
+          clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO          
       - name: Build debug app
         script: |
-          xcodebuild \
-            -project "$XCODE_PROJECT" \
-            -scheme "$XCODE_SCHEME" \
-            -sdk iphonesimulator \
-            -destination "platform=iOS Simulator,id=$TARGET_DEVICE_ID" \
-            -skipPackagePluginValidation \
-            clean build \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO
+          xcodebuild build -project "$XCODE_PROJECT" \
+          -scheme "$XCODE_SCHEME" \
+          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO  
 
     artifacts:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app

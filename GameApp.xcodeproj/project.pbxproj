@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18090B753018E72300EB9671 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 18090B743018E72300EB9671 /* Alamofire */; };
 		18090C4E3018EBEB00EB9671 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 18090C4D3018EBEB00EB9671 /* Swinject */; };
+		183F57E53020BC1100F3EC5F /* codemagic.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 183F57E43020BC0A00F3EC5F /* codemagic.yaml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +23,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183F57E43020BC0A00F3EC5F /* codemagic.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codemagic.yaml; sourceTree = "<group>"; };
 		1898D3B63019F5BC003579D8 /* GameAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D36982300F153B00DF326E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .swiftlint.yml; sourceTree = "<group>"; };
 		18E10AD6300B12C100013C9F /* GameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 		18E10ACD300B12C100013C9F = {
 			isa = PBXGroup;
 			children = (
+				183F57E43020BC0A00F3EC5F /* codemagic.yaml */,
 				18D36982300F153B00DF326E /* .swiftlint.yml */,
 				18E10AD8300B12C100013C9F /* GameApp */,
 				1898D3B73019F5BC003579D8 /* GameAppTests */,
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183F57E53020BC1100F3EC5F /* codemagic.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

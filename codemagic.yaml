@@ -11,22 +11,28 @@ workflows:
     scripts:
       - name: Setup and Boot Simulator
         script: |
-          # 1. Matikan semua simulator sisa untuk menghemat RAM server
-          xcrun simctl shutdown all
+          # Ambil Bundle Identifier Runtime iOS yang valid secara instan
+          AVAILABLE_RUNTIME=$(xcrun simctl list runtimes | grep -oE "com.apple.CoreSimulator.SimRuntime.iOS-[0-9.-]+" | head -n 1)
           
-          # 2. Buat simulator baru menggunakan tipe perangkat yang didukung Xcode terbaru
-          # Tipe runtime akan otomatis membaca versi SDK iOS internal Xcode yang aktif
-          TEST_DEVICE_ID=$(xcrun simctl create "CodemagicTestDevice" com.apple.CoreSimulator.SimDeviceType.iPhone-15 com.apple.CoreSimulator.SimRuntime.iOS-18-0)
+          if [ -z "$AVAILABLE_RUNTIME" ]; then
+            echo "Error: SimRuntime iOS tidak ditemukan pada host ini."
+            exit 1
+          fi
+
+          # Ambil Tipe Perangkat iPhone terbaru yang terdaftar di sistem
+          AVAILABLE_DEVICE_TYPE=$(xcrun simctl list devicetypes | grep -oE "com.apple.CoreSimulator.SimDeviceType.iPhone-[0-9a-zA-Z--]+" | tail -n 1)
+
+          # Buat simulator baru menggunakan relasi manifes di atas
+          TEST_DEVICE_ID=$(xcrun simctl create "CodemagicTestDevice" "$AVAILABLE_DEVICE_TYPE" "$AVAILABLE_RUNTIME")
           
-          # 3. Nyalakan simulator di latar belakang server
+          # Nyalakan simulator virtual untuk runtime testing
           xcrun simctl boot "$TEST_DEVICE_ID"
           
-          # 4. Simpan ID perangkat ke env variabel global Codemagic untuk dipakai di step berikutnya
+          # Daftarkan variabel secara global ke environment mesin Codemagic
           echo "export TARGET_DEVICE_ID=\"$TEST_DEVICE_ID\"" >> $CM_ENV
 
       - name: Run tests
         script: |
-          # Eksekusi tes langsung membidik ID simulator yang baru saja dinyalakan
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \
@@ -36,7 +42,6 @@ workflows:
 
       - name: Build debug app
         script: |
-          # Proses build untuk simulator menggunakan arsitektur SDK iphonesimulator
           xcodebuild \
             -project "$XCODE_PROJECT" \
             -scheme "$XCODE_SCHEME" \

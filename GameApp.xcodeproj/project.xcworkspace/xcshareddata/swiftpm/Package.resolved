@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jonrysimbolon/GameAppIosDomain.git",
       "state" : {
-        "revision" : "4d9ba1b39efdbf8c22354374423525d55b7234f4",
-        "version" : "1.1.5"
+        "revision" : "a73f32eb8b9fe84075666932ac5ab1f1a1f48c5b",
+        "version" : "1.1.9"
       }
     },
     {

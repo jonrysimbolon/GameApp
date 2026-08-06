@@ -1,4 +1,5 @@
 import SwiftUI
+import Data
 
 @main
 struct GameAppApp: App {

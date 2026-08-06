@@ -1,4 +1,6 @@
 import SwiftUI
+import Presentation
+import Shared
 import Swinject
 
 struct MainTabView: View {
@@ -6,26 +8,45 @@ struct MainTabView: View {
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            AppContainer.shared.container.resolve(HomeView.self)!
-                .tabItem {
-                    Label("Home", systemImage: "house.fill")
+            HomeView(
+                viewModel: AppContainer.shared.container.resolve(HomeViewModel.self)!,
+                detailViewBuilder: { id in
+                    AppContainer.shared.container.resolve(
+                        DetailView.self,
+                        argument: id
+                    )!
                 }
-                .tag(0)
+            )
+            .tabItem {
+                Label("Home", systemImage: "house.fill")
+            }
+            .tag(0)
             FavoriteView(
-                viewModel: AppContainer.shared.container.resolve(
-                    FavoriteViewModel.self
-                )!
+                viewModel: AppContainer.shared.container.resolve(FavoriteViewModel.self)!,
+                detailViewBuilder: { id in
+                    AppContainer.shared.container.resolve(
+                        DetailView.self,
+                        argument: id
+                    )!
+                }
             )
             .tabItem {
                 Label("Favorite", systemImage: "heart.fill")
             }
             .tag(1)
 
-            AboutView()
-                .tabItem {
-                    Label("About", systemImage: "person.fill")
+            AboutView(
+                viewModel: AppContainer.shared.container.resolve(AboutViewModel.self)!,
+                editProfileBuilder: {
+                    EditProfileView(
+                        viewModel: AppContainer.shared.container.resolve(EditProfileViewModel.self)!
+                    )
                 }
-                .tag(2)
+            )
+            .tabItem {
+                Label("About", systemImage: "person.fill")
+            }
+            .tag(2)
         }
         .tint(AppTheme.accentPurple)
         .onAppear {

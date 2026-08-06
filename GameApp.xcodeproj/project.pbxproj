@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1806F0E03024511C00BB8B1D /* CoreNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 1806F0DF3024511C00BB8B1D /* CoreNetwork */; };
+		1806F0E33024512800BB8B1D /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 1806F0E23024512800BB8B1D /* Data */; };
+		1806F0E63024513500BB8B1D /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 1806F0E53024513500BB8B1D /* Presentation */; };
+		1806F0E93024514100BB8B1D /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 1806F0E83024514100BB8B1D /* Shared */; };
 		18090C4E3018EBEB00EB9671 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 18090C4D3018EBEB00EB9671 /* Swinject */; };
 		1823B13030235F0B005E8E76 /* CoreNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 1823B12F30235F0B005E8E76 /* CoreNetwork */; };
 		1823B13330237436005E8E76 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 1823B13230237436005E8E76 /* Data */; };
@@ -19,7 +23,6 @@
 		18F5F92F3024391C008DE3B7 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F92E3024391C008DE3B7 /* Domain */; };
 		18F5F93230243928008DE3B7 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F93130243928008DE3B7 /* Presentation */; };
 		18F5F93530243934008DE3B7 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F93430243934008DE3B7 /* Shared */; };
-		18F5F93730243A18008DE3B7 /* .gitignore in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F93630243A0B008DE3B7 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,15 +59,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				1823B13630237A7C005E8E76 /* Shared in Frameworks */,
+				1806F0E33024512800BB8B1D /* Data in Frameworks */,
 				1834147D30234A3100A3ABE0 /* Domain in Frameworks */,
 				1823B13030235F0B005E8E76 /* CoreNetwork in Frameworks */,
 				1823B13330237436005E8E76 /* Data in Frameworks */,
+				1806F0E93024514100BB8B1D /* Shared in Frameworks */,
 				18CF10213023864000A7713C /* Presentation in Frameworks */,
+				1806F0E63024513500BB8B1D /* Presentation in Frameworks */,
 				18090C4E3018EBEB00EB9671 /* Swinject in Frameworks */,
 				18F5F92F3024391C008DE3B7 /* Domain in Frameworks */,
 				18F5F92C30243913008DE3B7 /* Data in Frameworks */,
 				18F5F93230243928008DE3B7 /* Presentation in Frameworks */,
 				18F5F93530243934008DE3B7 /* Shared in Frameworks */,
+				1806F0E03024511C00BB8B1D /* CoreNetwork in Frameworks */,
 				18F5F92930243907008DE3B7 /* CoreNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +130,10 @@
 				18F5F92E3024391C008DE3B7 /* Domain */,
 				18F5F93130243928008DE3B7 /* Presentation */,
 				18F5F93430243934008DE3B7 /* Shared */,
+				1806F0DF3024511C00BB8B1D /* CoreNetwork */,
+				1806F0E23024512800BB8B1D /* Data */,
+				1806F0E53024513500BB8B1D /* Presentation */,
+				1806F0E83024514100BB8B1D /* Shared */,
 			);
 			productName = GameApp;
 			productReference = 18E10AD6300B12C100013C9F /* GameApp.app */;
@@ -155,11 +166,10 @@
 			packageReferences = (
 				18D3697F300F14C600DF326E /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				18090C4C3018EBEB00EB9671 /* XCRemoteSwiftPackageReference "Swinject" */,
-				18F5F92730243907008DE3B7 /* XCLocalSwiftPackageReference "../Module/CoreNetwork" */,
-				18F5F92A30243913008DE3B7 /* XCLocalSwiftPackageReference "../Module/Data" */,
-				18F5F92D3024391C008DE3B7 /* XCLocalSwiftPackageReference "../Module/Domain" */,
-				18F5F93030243928008DE3B7 /* XCLocalSwiftPackageReference "../Module/Presentation" */,
-				18F5F93330243934008DE3B7 /* XCLocalSwiftPackageReference "../Module/Shared" */,
+				1806F0DE3024511C00BB8B1D /* XCLocalSwiftPackageReference "Module/CoreNetwork" */,
+				1806F0E13024512800BB8B1D /* XCLocalSwiftPackageReference "Module/Data" */,
+				1806F0E43024513500BB8B1D /* XCLocalSwiftPackageReference "Module/Presentation" */,
+				1806F0E73024514100BB8B1D /* XCLocalSwiftPackageReference "Module/Shared" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 18E10AD7300B12C100013C9F /* Products */;
@@ -187,7 +197,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F5F93730243A18008DE3B7 /* .gitignore in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,25 +437,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		18F5F92730243907008DE3B7 /* XCLocalSwiftPackageReference "../Module/CoreNetwork" */ = {
+		1806F0DE3024511C00BB8B1D /* XCLocalSwiftPackageReference "Module/CoreNetwork" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Module/CoreNetwork;
+			relativePath = Module/CoreNetwork;
 		};
-		18F5F92A30243913008DE3B7 /* XCLocalSwiftPackageReference "../Module/Data" */ = {
+		1806F0E13024512800BB8B1D /* XCLocalSwiftPackageReference "Module/Data" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Module/Data;
+			relativePath = Module/Data;
 		};
-		18F5F92D3024391C008DE3B7 /* XCLocalSwiftPackageReference "../Module/Domain" */ = {
+		1806F0E43024513500BB8B1D /* XCLocalSwiftPackageReference "Module/Presentation" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Module/Domain;
+			relativePath = Module/Presentation;
 		};
-		18F5F93030243928008DE3B7 /* XCLocalSwiftPackageReference "../Module/Presentation" */ = {
+		1806F0E73024514100BB8B1D /* XCLocalSwiftPackageReference "Module/Shared" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Module/Presentation;
-		};
-		18F5F93330243934008DE3B7 /* XCLocalSwiftPackageReference "../Module/Shared" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../Module/Shared;
+			relativePath = Module/Shared;
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -470,6 +475,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		1806F0DF3024511C00BB8B1D /* CoreNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreNetwork;
+		};
+		1806F0E23024512800BB8B1D /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		1806F0E53024513500BB8B1D /* Presentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Presentation;
+		};
+		1806F0E83024514100BB8B1D /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
+		};
 		18090C4D3018EBEB00EB9671 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 18090C4C3018EBEB00EB9671 /* XCRemoteSwiftPackageReference "Swinject" */;

@@ -10,7 +10,7 @@ final class RepositoryAssembly: Assembly {
             GameRemoteDataSourceImpl(network: resolver.resolve(NetworkProvider.self)!)
         }
 
-        container.register(GameRepositoryProtocol.self) { resolver in
+        container.register((any GameRepositoryProtocol).self) { resolver in
             GameRepository(remote: resolver.resolve(GameRemoteDataSource.self)!)
         }
 
@@ -18,7 +18,7 @@ final class RepositoryAssembly: Assembly {
             FavoriteLocalDataSourceImpl(context: PersistenceController.shared.viewContext)
         }
 
-        container.register(FavoriteRepositoryProtocol.self) { resolver in
+        container.register((any FavoriteRepositoryProtocol).self) { resolver in
             FavoriteRepository(
                 local: resolver.resolve(FavoriteLocalDataSource.self)!,
                 context: PersistenceController.shared.viewContext

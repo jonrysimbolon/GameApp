@@ -1,5 +1,5 @@
 {
-  "originHash" : "ee2cdfab6357d3c26f0b78c512030dbfa0d8267a2db148ab127c2117a44f41e5",
+  "originHash" : "ccdfcaaf9299aa1261dc739c59b4a1879d4419ac9da0c86bfda032504b117263",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "7595cbcf59809f9977c5f6378500de2ad73b7ddb",
         "version" : "5.12.0"
+      }
+    },
+    {
+      "identity" : "gameappiosdomain",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/jonrysimbolon/GameAppIosDomain.git",
+      "state" : {
+        "revision" : "4d9ba1b39efdbf8c22354374423525d55b7234f4",
+        "version" : "1.1.5"
       }
     },
     {

@@ -7,42 +7,42 @@ final class UseCaseAssembly: Assembly {
         container.register(GetGamesUseCase.self) { resolver in
 
             GetGamesUseCaseImpl(
-                repository: resolver.resolve(GameRepositoryProtocol.self)!
+                repository: resolver.resolve((any GameRepositoryProtocol).self)!
             )
         }
 
         container.register(SearchGamesUseCase.self) { resolver in
 
             SearchGamesUseCaseImpl(
-                repository: resolver.resolve(GameRepositoryProtocol.self)!
+                repository: resolver.resolve((any GameRepositoryProtocol).self)!
             )
         }
 
         container.register(GetGameDetailUseCase.self) { resolver in
 
             GetGameDetailUseCaseImpl(
-                repository: resolver.resolve(GameRepositoryProtocol.self)!
+                repository: resolver.resolve((any GameRepositoryProtocol).self)!
             )
         }
 
         container.register(GetFavoritesUseCase.self) { resolver in
 
             GetFavoritesUseCaseImpl(
-                repository: resolver.resolve(FavoriteRepositoryProtocol.self)!
+                repository: resolver.resolve((any FavoriteRepositoryProtocol).self)!
             )
         }
 
         container.register(IsFavoriteUseCase.self) { resolver in
 
             IsFavoriteUseCaseImpl(
-                repository: resolver.resolve(FavoriteRepositoryProtocol.self)!
+                repository: resolver.resolve((any FavoriteRepositoryProtocol).self)!
             )
         }
 
         container.register(ToggleFavoriteUseCase.self) { resolver in
 
             ToggleFavoriteUseCaseImpl(
-                repository: resolver.resolve(FavoriteRepositoryProtocol.self)!
+                repository: resolver.resolve((any FavoriteRepositoryProtocol).self)!
             )
         }
 

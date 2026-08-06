@@ -3,25 +3,29 @@
 import PackageDescription
 
 let package = Package(
-    name: "Shared",
+    name: "Home",
     platforms: [
         .iOS(.v26),
         .macOS(.v15)
     ],
     products: [
         .library(
-            name: "Shared",
-            targets: ["Shared"]
+            name: "Home",
+            targets: ["Home"]
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/jonrysimbolon/GameAppIosDomain.git", from: "1.1.0")
+        .package(url: "https://github.com/jonrysimbolon/GameAppIosDomain.git", from: "1.1.0"),
+        .package(path: "../Shared"),
+        .package(path: "../Detail")
     ],
     targets: [
         .target(
-            name: "Shared",
+            name: "Home",
             dependencies: [
                 .product(name: "Domain", package: "GameAppIosDomain"),
+                "Shared",
+                "Detail"
             ]
         )
     ],

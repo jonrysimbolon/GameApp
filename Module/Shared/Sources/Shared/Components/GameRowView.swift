@@ -3,10 +3,14 @@ import Shared
 
 import SwiftUI
 
-struct GameRowView: View {
+public struct GameRowView: View {
     let game: Game
 
-    var body: some View {
+    public init(game: Game) {
+        self.game = game
+    }
+
+    public var body: some View {
         HStack(spacing: 12) {
             AsyncImageView(urlString: game.backgroundImage)
                 .frame(width: 80, height: 80)

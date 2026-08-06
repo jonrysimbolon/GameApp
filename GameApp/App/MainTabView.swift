@@ -1,5 +1,8 @@
 import SwiftUI
-import Presentation
+import About
+import Favorite
+import Detail
+import Home
 import Shared
 import Swinject
 

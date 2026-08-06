@@ -1,6 +1,9 @@
 import Domain
-import Presentation
 import Swinject
+import About
+import Favorite
+import Detail
+import Home
 
 final class ViewModelAssembly: Assembly {
 

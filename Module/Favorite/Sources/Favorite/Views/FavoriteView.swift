@@ -1,4 +1,5 @@
 import Domain
+import Detail
 import Shared
 
 import SwiftUI

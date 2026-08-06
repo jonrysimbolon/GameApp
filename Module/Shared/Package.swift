@@ -21,7 +21,7 @@ let package = Package(
         .target(
             name: "Shared",
             dependencies: [
-                .product(name: "Domain", package: "GameAppIosDomain"),
+                .product(name: "Domain", package: "GameAppIosDomain")
             ]
         )
     ],

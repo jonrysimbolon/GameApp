@@ -17,7 +17,7 @@ public final class AlamofireNetworkProvider: NetworkProvider {
     public func request<T: Decodable & Sendable>(
         endpoint: Endpoint,
         response: T.Type
-    ) -> AnyPublisher<T, Error>{
+    ) -> AnyPublisher<T, Error> {
 
         Future<T, Error> { promise in
 

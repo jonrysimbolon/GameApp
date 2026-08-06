@@ -14,7 +14,7 @@ public struct EditProfileView: View {
     ) {
         self.viewModel = viewModel
     }
-    
+
     public var body: some View {
 
         ZStack {

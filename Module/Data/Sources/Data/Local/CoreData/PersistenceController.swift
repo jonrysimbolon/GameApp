@@ -1,6 +1,6 @@
 import CoreData
 
-public struct PersistenceController : Sendable{
+public struct PersistenceController: Sendable {
 
     public static let shared = PersistenceController()
 

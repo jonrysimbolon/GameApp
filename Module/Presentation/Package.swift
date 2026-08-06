@@ -25,7 +25,7 @@ let package = Package(
                 .product(name: "Domain", package: "GameAppIosDomain"),
                 "Shared"
             ]
-        ),
+        )
     ],
     swiftLanguageModes: [.v6]
 )

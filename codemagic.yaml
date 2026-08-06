@@ -1,14 +1,23 @@
 workflows:
   ios-project-debug:
     name: iOS debug
-
     environment:
       xcode: latest
       vars:
         XCODE_PROJECT: "GameApp.xcodeproj"
         XCODE_SCHEME: "GameApp"
-
     scripts:
+      - name: Run SwiftLint
+        script: |
+          if which swiftlint >/dev/null; then
+            swiftlint lint --strict
+          else
+            echo "SwiftLint not installed, skipping"
+          fi
+      - name: Vulnerability scan
+        script: |
+          brew install osv-scanner
+          osv-scanner --lockfile=GameApp.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
       - name: Build debug app
         script: |
           xcodebuild build \
@@ -18,10 +27,8 @@ workflows:
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
           CODE_SIGNING_ALLOWED=NO
-
     artifacts:
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.app
-
     publishing:
       email:
         recipients:

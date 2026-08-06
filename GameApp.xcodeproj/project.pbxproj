@@ -14,12 +14,19 @@
 		1834147D30234A3100A3ABE0 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 1834147C30234A3100A3ABE0 /* Domain */; };
 		183F57E53020BC1100F3EC5F /* codemagic.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 183F57E43020BC0A00F3EC5F /* codemagic.yaml */; };
 		18CF10213023864000A7713C /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 18CF10203023864000A7713C /* Presentation */; };
+		18F5F92930243907008DE3B7 /* CoreNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F92830243907008DE3B7 /* CoreNetwork */; };
+		18F5F92C30243913008DE3B7 /* Data in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F92B30243913008DE3B7 /* Data */; };
+		18F5F92F3024391C008DE3B7 /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F92E3024391C008DE3B7 /* Domain */; };
+		18F5F93230243928008DE3B7 /* Presentation in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F93130243928008DE3B7 /* Presentation */; };
+		18F5F93530243934008DE3B7 /* Shared in Frameworks */ = {isa = PBXBuildFile; productRef = 18F5F93430243934008DE3B7 /* Shared */; };
+		18F5F93730243A18008DE3B7 /* .gitignore in Sources */ = {isa = PBXBuildFile; fileRef = 18F5F93630243A0B008DE3B7 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		183F57E43020BC0A00F3EC5F /* codemagic.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = codemagic.yaml; sourceTree = "<group>"; };
 		18D36982300F153B00DF326E /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .swiftlint.yml; sourceTree = "<group>"; };
 		18E10AD6300B12C100013C9F /* GameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18F5F93630243A0B008DE3B7 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -54,6 +61,11 @@
 				1823B13330237436005E8E76 /* Data in Frameworks */,
 				18CF10213023864000A7713C /* Presentation in Frameworks */,
 				18090C4E3018EBEB00EB9671 /* Swinject in Frameworks */,
+				18F5F92F3024391C008DE3B7 /* Domain in Frameworks */,
+				18F5F92C30243913008DE3B7 /* Data in Frameworks */,
+				18F5F93230243928008DE3B7 /* Presentation in Frameworks */,
+				18F5F93530243934008DE3B7 /* Shared in Frameworks */,
+				18F5F92930243907008DE3B7 /* CoreNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +75,7 @@
 		18E10ACD300B12C100013C9F = {
 			isa = PBXGroup;
 			children = (
+				18F5F93630243A0B008DE3B7 /* .gitignore */,
 				183F57E43020BC0A00F3EC5F /* codemagic.yaml */,
 				18D36982300F153B00DF326E /* .swiftlint.yml */,
 				18E10AD8300B12C100013C9F /* GameApp */,
@@ -105,6 +118,11 @@
 				1823B13230237436005E8E76 /* Data */,
 				1823B13530237A7C005E8E76 /* Shared */,
 				18CF10203023864000A7713C /* Presentation */,
+				18F5F92830243907008DE3B7 /* CoreNetwork */,
+				18F5F92B30243913008DE3B7 /* Data */,
+				18F5F92E3024391C008DE3B7 /* Domain */,
+				18F5F93130243928008DE3B7 /* Presentation */,
+				18F5F93430243934008DE3B7 /* Shared */,
 			);
 			productName = GameApp;
 			productReference = 18E10AD6300B12C100013C9F /* GameApp.app */;
@@ -137,11 +155,11 @@
 			packageReferences = (
 				18D3697F300F14C600DF326E /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 				18090C4C3018EBEB00EB9671 /* XCRemoteSwiftPackageReference "Swinject" */,
-				1834147B30234A3100A3ABE0 /* XCLocalSwiftPackageReference "Domain" */,
-				1823B12E30235F0B005E8E76 /* XCLocalSwiftPackageReference "CoreNetwork" */,
-				1823B13130237436005E8E76 /* XCLocalSwiftPackageReference "Data" */,
-				1823B13430237A7C005E8E76 /* XCLocalSwiftPackageReference "Shared" */,
-				18CF101F3023864000A7713C /* XCLocalSwiftPackageReference "Presentation" */,
+				18F5F92730243907008DE3B7 /* XCLocalSwiftPackageReference "../Module/CoreNetwork" */,
+				18F5F92A30243913008DE3B7 /* XCLocalSwiftPackageReference "../Module/Data" */,
+				18F5F92D3024391C008DE3B7 /* XCLocalSwiftPackageReference "../Module/Domain" */,
+				18F5F93030243928008DE3B7 /* XCLocalSwiftPackageReference "../Module/Presentation" */,
+				18F5F93330243934008DE3B7 /* XCLocalSwiftPackageReference "../Module/Shared" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 18E10AD7300B12C100013C9F /* Products */;
@@ -169,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18F5F93730243A18008DE3B7 /* .gitignore in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,25 +428,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		1823B12E30235F0B005E8E76 /* XCLocalSwiftPackageReference "CoreNetwork" */ = {
+		18F5F92730243907008DE3B7 /* XCLocalSwiftPackageReference "../Module/CoreNetwork" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = CoreNetwork;
+			relativePath = ../Module/CoreNetwork;
 		};
-		1823B13130237436005E8E76 /* XCLocalSwiftPackageReference "Data" */ = {
+		18F5F92A30243913008DE3B7 /* XCLocalSwiftPackageReference "../Module/Data" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = Data;
+			relativePath = ../Module/Data;
 		};
-		1823B13430237A7C005E8E76 /* XCLocalSwiftPackageReference "Shared" */ = {
+		18F5F92D3024391C008DE3B7 /* XCLocalSwiftPackageReference "../Module/Domain" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = Shared;
+			relativePath = ../Module/Domain;
 		};
-		1834147B30234A3100A3ABE0 /* XCLocalSwiftPackageReference "Domain" */ = {
+		18F5F93030243928008DE3B7 /* XCLocalSwiftPackageReference "../Module/Presentation" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = Domain;
+			relativePath = ../Module/Presentation;
 		};
-		18CF101F3023864000A7713C /* XCLocalSwiftPackageReference "Presentation" */ = {
+		18F5F93330243934008DE3B7 /* XCLocalSwiftPackageReference "../Module/Shared" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = Presentation;
+			relativePath = ../Module/Shared;
 		};
 /* End XCLocalSwiftPackageReference section */
 
@@ -480,6 +499,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 18D3697F300F14C600DF326E /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
 			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		18F5F92830243907008DE3B7 /* CoreNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreNetwork;
+		};
+		18F5F92B30243913008DE3B7 /* Data */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Data;
+		};
+		18F5F92E3024391C008DE3B7 /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		18F5F93130243928008DE3B7 /* Presentation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Presentation;
+		};
+		18F5F93430243934008DE3B7 /* Shared */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Shared;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
